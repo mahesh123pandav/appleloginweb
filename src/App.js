@@ -4,7 +4,7 @@ import './index.css';
 
 const clientId = 'com.eo.meet.web';
 const scope = 'name email';
-const redirectURI = 'https://appleloginweb.vercel.app';
+const redirectURI = 'https://appleloginweb.vercel.app/';
 const state = 'origin:web';
 
 export default function App() {
