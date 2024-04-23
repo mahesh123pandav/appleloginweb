@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
 
-function App() {
+import './index.css';
+
+const clientId = 'com.eo.meet.web';
+const scope = 'name email';
+const redirectURI = 'https://203e-103-112-226-59.ngrok-free.app/';
+const state = 'origin:web';
+
+export default function App() {
+  useEffect(() => {
+    window.AppleID.auth.init({
+      clientId,
+      scope,
+      redirectURI,
+      state,
+      usePopup: false
+    });
+
+    document.addEventListener('AppleIDSignInOnSuccess', (event) => {
+      // Handle successful response.
+      console.log('Success ', event);
+    });
+
+    document.addEventListener('AppleIDSignInOnFailure', (event) => {
+      console.log('Error ', event);
+    });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div
+        id="appleid-signin"
+        className="signin-button"
+        data-color="black"
+        data-border="true"
+        data-type="sign-in"
+      ></div>
     </div>
   );
 }
-
-export default App;

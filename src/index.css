@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.signin-button > div > div > svg {
+  height: 50px;
+  width: 100%;
+}
+
